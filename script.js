@@ -12,3 +12,7 @@ document.getElementById('funfact-form').addEventListener('submit', function(even
   document.getElementById('name').value = '';
   document.getElementById('funfact').value = '';
 });
+
+
+//Das Script sorgt dafür, dass das Formular beim Absenden nicht 
+//die ganze Seite neu lädt und die eingegebenen Werte in der Konsole ausgegeben werden.

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="de">
-<!-- Title mit Icon und css implementieren -->
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FunFacts</title>
@@ -8,7 +7,6 @@
     <link rel="icon" type="image/png" href="img/me.png">
 </head>
 <body>
-<!-- Links zu den HTML Seiten -->
     <div class="background">
         <nav>
             <div>
@@ -18,60 +16,75 @@
                 <a href="index.html" class="home">Home</a>
             </div>
         </nav>
-<!-- Abschnitt für FunFacts  -->
+
+        <!-- Abschnitt für FunFacts -->
         <div class="funfact-section">
             <div class="content">
                 <h1>Interessante FunFacts</h1>
                 <ul id="default-funfacts">
                     <li>Ich gehe bei Gelegenheit ins Tierheim und laufe mit Hunden</li>
                     <li>Ich räume gerne auf</li>
-                    <li>Ich liebe es zu backen auch wenn ich es nicht wirklich gut kann</li>
+                    <li>Ich liebe es zu backen, auch wenn ich es nicht wirklich gut kann</li>
                 </ul>
             </div>
-<!-- Formular -->
-<fieldset class="funfact-form-container funfact">
-    <legend>Erzähle mir von deinem FunFact</legend>
-    <form id="funfact-form">
-        <label for="name">Dein Name:</label>
-        <input type="text" id="name" name="name" required>
 
-        <label for="funfact">Dein FunFact:</label>
-        <textarea id="funfact" name="funfact" rows="4" required></textarea>
+            <!-- Formular -->
+            <fieldset class="funfact-form-container funfact">
+                <legend>Erzähle mir von deinem FunFact</legend>
+                <form id="funfact-form">
+                    <label for="name">Dein Name:</label>
+                    <input type="text" id="name" name="name" required>
 
-<!-- Checkbox für Bedingungen akzeptieren -->
-        <div class="checkbox-container">
-            <input type="checkbox" id="terms" name="terms" required>
-            <label for="terms">Akzeptiere die Bedingungen</label>
+                    <label for="funfact">Dein FunFact:</label>
+                    <textarea id="funfact" name="funfact" rows="4" required></textarea>
+
+                    <!-- Checkbox für Bedingungen akzeptieren -->
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Akzeptiere die Bedingungen das du das Teilen magst</label>
+                    </div>
+
+                    <label for="category">Wo:</label>
+                    <select id="category" name="category">
+                        <option value="personal">Persönlich</option>
+                        <option value="work">Arbeit</option>
+                        <option value="misc">Sonstiges</option>
+                    </select>
+
+                    <!-- Radios für Häufigkeit -->
+                    <div class="radio-container">
+                        <label>
+                            <input type="radio" name="frequency" value="daily"> Täglich
+                        </label>
+                        <label>
+                            <input type="radio" name="frequency" value="weekly"> Wöchentlich
+                        </label>
+                        <label>
+                            <input type="radio" name="frequency" value="monthly"> Monatlich
+                        </label>
+                    </div>
+
+                    <button type="submit">Eintragen</button>
+                </form>
+                <ul id="funfact-list"></ul>
+            </fieldset>
         </div>
+    </div>
 
-        <label for="category">Kategorie:</label>
-        <select id="category" name="category">
-            <option value="personal">Persönlich</option>
-            <option value="work">Arbeit</option>
-            <option value="misc">Sonstiges</option>
-        </select>
+    <!-- Formular-Script -->
+    <script>
+        document.getElementById('funfact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Verhindert das Neuladen der Seite
 
-<!-- Radios für Häufigkeit -->
-        <div class="radio-container">
-            <label>
-                <input type="radio" name="frequency" value="daily">
-                Täglich
-            </label>
-            <label>
-                <input type="radio" name="frequency" value="weekly">
-                Wöchentlich
-            </label>
-            <label>
-                <input type="radio" name="frequency" value="monthly">
-                Monatlich
-            </label>
-        </div>
+            // Eingabefelder leeren
+            document.getElementById('name').value = '';
+            document.getElementById('funfact').value = '';
+            document.getElementById('terms').checked = false;
+            document.getElementById('category').selectedIndex = 0;
+            document.querySelectorAll('input[name="frequency"]').forEach(radio => radio.checked = false);
 
-        <button type="function button">Eintragen</button>
-    </form>
-    <ul id="funfact-list"></ul>
-</fieldset>
-<!-- Formular-Script -->
-    <script src="script.js"></script>
+            alert('Dein FunFact wurde gespeichert!');
+        });
+    </script>
 </body>
 </html>

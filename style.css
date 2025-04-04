@@ -156,9 +156,8 @@ nav ul li a {
 }
 
 /* FunFacts und Liste bleiben gleich */
-/*-----------------------------------*/
-/* Dieser Abschnitt definiert das Layout der FunFacts-Sektion.
-   Zwei Bereiche: der Textbereich (funfact-content) und das Formular (funfact-form-container). */
+/* Dieser Abschnitt definiert das Layout der FunFacts-Sektion.*/
+  
    .funfact-section {
     display: flex;
     justify-content: space-between;
@@ -277,6 +276,8 @@ nav ul li a {
     /* Navigation anpassen */
     nav {
         justify-content: center; /* Zentriert die Navigation auf kleineren Bildschirmen */
+        flex-direction: column; /* Falls nötig, Menü untereinander */
+        align-items: center;
     }
 
     .content {
@@ -338,5 +339,31 @@ nav ul li a {
 }
 .test{
     position: inherit;
+}
+
+
+
+
+/* Standard-Design für große Bildschirme */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Mobile-Version (max. 768px) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stapelt Elemente */
+        align-items: center; /* Zentriert Inhalt */
+    }
+    
+    .content h1 {
+        font-size: 24px; /* Kleinere Schrift für Mobilgeräte */
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 }
